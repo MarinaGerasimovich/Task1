@@ -26,7 +26,6 @@ public class Main {
         userService.saveUser("Olga", "Pavlova", (byte) 21);
 
         userService.removeUserById(2);
-        //в условии нет этого мотода на проверку, для себя проверяла
 
         List<User> allUsers = userService.getAllUsers();
         for (User user : allUsers) {

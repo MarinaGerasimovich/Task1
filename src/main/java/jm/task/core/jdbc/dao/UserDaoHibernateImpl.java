@@ -64,13 +64,6 @@ public class UserDaoHibernateImpl implements UserDao {
             session.beginTransaction();
             session.save(new User(name, lastName, age));
             System.out.println("User с именем - " + name + " добавлен в базу данных Hibernate");
-            /*User user = new User(name, lastName, age);
-            session.createSQLQuery("INSERT INTO users (name, last_name, age) VALUES (?,?,?)")
-                    .setParameter(1, name)
-                    .setParameter(2, lastName)
-                    .setParameter(3, age)
-                    .executeUpdate();
-            */
             session.getTransaction().commit();
 
         } catch (HibernateException e) {
@@ -88,11 +81,6 @@ public class UserDaoHibernateImpl implements UserDao {
         try {
             session.beginTransaction();
             session.remove(session.get(User.class, id));
-            /*
-            session.createSQLQuery("DELETE FROM users WHERE id = ?")
-                    .setParameter(1, id)
-                    .executeUpdate();
-             */
             session.getTransaction().commit();
         } catch (HibernateException e) {
             session.getTransaction().rollback();
@@ -111,7 +99,6 @@ public class UserDaoHibernateImpl implements UserDao {
             session.beginTransaction();
 
             users1 = session.createQuery("from User", User.class).list();
-            //users1 = session.createSQLQuery("SELECT id, name, last_name, age FROM users").getResultList();
             session.getTransaction().commit();
         } catch (HibernateException e) {
             session.getTransaction().rollback();
