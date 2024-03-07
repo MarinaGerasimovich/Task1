@@ -20,7 +20,7 @@ public class UserDaoJDBCImpl implements UserDao {
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS users (" +
                     "id BIGSERIAL PRIMARY KEY, " +
                     "name VARCHAR (255)," +
-                    "last_name VARCHAR (255)," +
+                    "lastname VARCHAR (255)," +
                     "age INTEGER )");
         }
          catch (SQLException e) {
@@ -41,7 +41,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public void saveUser(String name, String lastName, byte age) {
 
         try (PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO users " +
-                "(name, last_name, age) VALUES (?,?,?)")){
+                "(name, lastname, age) VALUES (?,?,?)")){
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, lastName);
             preparedStatement.setByte(3, age);
@@ -66,11 +66,11 @@ public class UserDaoJDBCImpl implements UserDao {
         List<User> usersList = new ArrayList<>();
 
         try(ResultSet resultSet= conn.createStatement().executeQuery("SELECT id," +
-                " name, last_name, age FROM users")) {
+                " name, lastname, age FROM users")) {
             while (resultSet.next()) {
                 User userOne = new User(
                         resultSet.getString("name"),
-                        resultSet.getString("last_name"),
+                        resultSet.getString("lastname"),
                         resultSet.getByte("age"));
                 userOne.setId(resultSet.getLong("id"));
                 usersList.add(userOne);

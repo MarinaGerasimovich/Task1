@@ -43,9 +43,7 @@ public class Util {
         properties.setProperty("hibernate.hbm2ddl.auto","update");
 
 
-        configuration.setProperties(properties);
-
-        sessionFactory = configuration.addAnnotatedClass(User.class).buildSessionFactory();
+        sessionFactory = configuration.addProperties(properties).addAnnotatedClass(User.class).buildSessionFactory();
 
         return sessionFactory;
     }

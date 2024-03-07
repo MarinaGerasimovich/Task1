@@ -26,7 +26,7 @@ public class UserDaoHibernateImpl implements UserDao {
             session.createSQLQuery("CREATE TABLE IF NOT EXISTS users (" +
                     "id BIGSERIAL PRIMARY KEY," +
                     "name VARCHAR (255)," +
-                    "last_name VARCHAR (255)," +
+                    "lastname VARCHAR (255)," +
                     "age INTEGER)").executeUpdate();
 
             session.getTransaction().commit();

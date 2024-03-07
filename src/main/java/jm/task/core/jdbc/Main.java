@@ -18,22 +18,23 @@ public class Main {
     private final static UserService userService = new UserServiceImpl();
     public static void main(String[] args) {
 
-        userService.createUsersTable();
+       userService.createUsersTable();
 
-        userService.saveUser("Alex", "Ivanov", (byte) 42);
-        userService.saveUser("Oleg","Petrov", (byte) 33);
-        userService.saveUser("Elena", "Turova", (byte) 27);
-        userService.saveUser("Olga", "Pavlova", (byte) 21);
+       userService.saveUser("Alex", "Ivanov", (byte) 42);
+       userService.saveUser("Oleg","Petrov", (byte) 33);
+       userService.saveUser("Elena", "Turova", (byte) 27);
+       userService.saveUser("Olga", "Pavlova", (byte) 21);
 
         userService.removeUserById(2);
 
-        List<User> allUsers = userService.getAllUsers();
+       List<User> allUsers = userService.getAllUsers();
         for (User user : allUsers) {
            System.out.println(user.toString());
         }
 
         userService.cleanUsersTable();
         userService.dropUsersTable();
+
 
         }
     }
