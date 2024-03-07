@@ -25,15 +25,16 @@ public class Main {
        userService.saveUser("Elena", "Turova", (byte) 27);
        userService.saveUser("Olga", "Pavlova", (byte) 21);
 
-        userService.removeUserById(2);
+       userService.removeUserById(2);
 
        List<User> allUsers = userService.getAllUsers();
-        for (User user : allUsers) {
+       for (User user : allUsers) {
            System.out.println(user.toString());
         }
 
         userService.cleanUsersTable();
         userService.dropUsersTable();
+
 
 
         }
